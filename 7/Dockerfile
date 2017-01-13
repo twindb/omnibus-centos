@@ -7,23 +7,14 @@ RUN rpm -ivh http://download.fedoraproject.org/pub/epel/7/$(arch)/e/epel-release
 RUN yum groupinstall -y 'Development Tools'
 
 RUN yum install -y \
-    curl \
-    gpg \
     git \
     which \
-    rpm-build \
-    xz \
     openssl-devel \
     expat-devel \
-    gettext-devel \
     perl-ExtUtils-MakeMaker \
     perl-devel \
-    curl-devel \
     zlib-devel \
-    tar \
     fakeroot \
-    install \
-    gcc \
     cmake
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
