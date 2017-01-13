@@ -3,7 +3,7 @@ MAINTAINER Ovais Tariq @ovaistariq
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN rpm -ivh http://download.fedoraproject.org/pub/epel/7/$(arch)/e/epel-release-7-5.noarch.rpm
+RUN rpm -ivh http://download.fedoraproject.org/pub/epel/7/$(arch)/e/epel-release-7-9.noarch.rpm
 RUN yum groupinstall -y 'Development Tools'
 
 RUN yum install -y \
