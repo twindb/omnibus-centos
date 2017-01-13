@@ -9,6 +9,7 @@ RUN yum groupinstall -y 'Development Tools'
 RUN yum install -y \
     curl \
     gpg \
+    git \
     which \
     rpm-build \
     xz \
