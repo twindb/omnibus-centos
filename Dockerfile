@@ -27,6 +27,4 @@ RUN bash -lc "rvm requirements; \
         "
 
 RUN rm -rf /usr/local/rvm/src/ruby-2.2.2
-RUN scl enable python27 bash
-
-CMD /bin/bash -l
+CMD scl enable python27 bash; /bin/bash -l
