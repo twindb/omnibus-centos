@@ -1,8 +1,9 @@
-FROM centos:centos7
-MAINTAINER Ovais Tariq @ovaistariq
+FROM centos:centos6
+MAINTAINER Maksym Kryva @mkryva
 
 RUN yum -y install epel-release
 RUN yum groupinstall -y 'Development Tools'
+RUN yum -y install centos-release-scl
 
 RUN yum install -y \
     git \
@@ -13,6 +14,8 @@ RUN yum install -y \
     perl-devel \
     zlib-devel \
     fakeroot \
+    gcc \
+    python27 \
     cmake
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -24,5 +27,6 @@ RUN bash -lc "rvm requirements; \
         "
 
 RUN rm -rf /usr/local/rvm/src/ruby-2.2.2
+RUN scl enable python27 bash
 
 CMD /bin/bash -l
