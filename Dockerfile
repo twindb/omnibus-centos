@@ -20,9 +20,7 @@ RUN yum install -y \
     python27 \
     cmake
 
-RUN cd /usr/src ; wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; tar xzf git-2.9.5.tar.gz
-RUN cd git-2.9.5 ; make prefix=/usr/local/git all ; make prefix=/usr/local/git install
-RUN echo 'export PATH=$PATH:/usr/local/git/bin' >> /etc/bashrc
+RUN cd /usr/src ; wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; tar xzf git-2.9.5.tar.gz ; cd git-2.9.5 ; make prefix=/usr/local/git all ; make prefix=/usr/local/git install; echo 'export PATH=$PATH:/usr/local/git/bin' >> /etc/bashrc
 RUN source /etc/bashrc
 
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
