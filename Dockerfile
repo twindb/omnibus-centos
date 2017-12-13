@@ -19,10 +19,10 @@ RUN yum install -y \
     gcc \
     python27 \
     cmake
-
+RUN yum remove -y git
 RUN cd /usr/src ; wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; tar xzf git-2.9.5.tar.gz ; cd git-2.9.5 ; make prefix=/usr/local/git all ; make prefix=/usr/local/git install
-RUN echo 'export PATH=$PATH:/usr/local/git/bin' >> /root/.bashrc
 RUN cat /opt/rh/python27/enable >> /root/.bashrc
+RUN echo 'export PATH=$PATH:/usr/local/git/bin' >> /root/.bashrc
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable
 
