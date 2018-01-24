@@ -18,7 +18,17 @@ RUN yum install -y \
     fakeroot \
     gcc \
     python27 \
-    cmake
+    cmake \
+    libaio \
+    libaio-devel \
+    automake \
+    bison \
+    ncurses-devel \
+    libgcrypt-devel \
+    libev-devel \
+    libcurl-devel \
+    vim-common \
+    autoconf
 RUN yum remove -y git
 RUN cd /usr/src ; wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; tar xzf git-2.9.5.tar.gz ; cd git-2.9.5 ; make prefix=/usr/local/git all ; make prefix=/usr/local/git install
 RUN cat /opt/rh/python27/enable >> /root/.bashrc
