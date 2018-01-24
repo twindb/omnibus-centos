@@ -13,10 +13,14 @@ RUN yum install -y \
     perl-devel \
     zlib-devel \
     fakeroot \
+    gcc \
+    gcc-c++ \
     cmake \
     libaio \
     libaio-devel \
     automake \
+    autoconf \
+    libtool \
     bison \
     ncurses-devel \
     libgcrypt-devel \
