@@ -37,7 +37,7 @@ RUN bash -lc "rvm requirements; \
 
 RUN rm -rf /usr/local/rvm/src/ruby-2.2.2
 
-RUN git clone git@github.com:twindb/backup.git /tmp/backup
+RUN git clone https://github.com/twindb/backup.git /tmp/backup
 RUN cd /tmp/backup/omnibus; bundle update; bundle install --binstubs
 
 CMD /bin/bash -l
