@@ -30,10 +30,17 @@ RUN yum install -y \
     libgcrypt-devel \
     libev-devel \
     libcurl-devel \
-    vim-common \
-    git
+    vim-common
 RUN yum remove -y git
-RUN cd /usr/src ; wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; tar xzf git-2.9.5.tar.gz ; cd git-2.9.5 ; make prefix=/usr/local/git all ; make prefix=/usr/local/git install
+
+RUN \
+    cd /usr/src ; \
+    wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz ; \
+    tar xzf git-2.9.5.tar.gz ; \
+    cd git-2.9.5 ; \
+    make prefix=/usr/local all ; \
+    make prefix=/usr/local install
+
 RUN cat /opt/rh/python27/enable >> /root/.bashrc
 RUN echo 'export PATH=$PATH:/usr/local/git/bin' >> /root/.bashrc
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -46,7 +53,7 @@ RUN bash -lc "rvm requirements; \
 
 RUN rm -rf /usr/local/rvm/src/ruby-2.2.2
 
-RUN git clone https://github.com/twindb/backup.git /tmp/backup
+RUN /usr/local/bin/git clone https://github.com/twindb/backup.git /tmp/backup
 RUN bash -lc "cd /tmp/backup/omnibus; bundle update; bundle install --binstubs"
 
 CMD /bin/bash -l
