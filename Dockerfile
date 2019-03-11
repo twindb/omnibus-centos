@@ -39,9 +39,9 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 RUN curl -sSL https://get.rvm.io | bash -s stable
 
 RUN bash -lc "rvm requirements; \
-        rvm install 2.2.2 ; \
+        rvm install 2.5.3 ; \
         gem install bundler --no-ri --no-rdoc;\
         "
 
-RUN rm -rf /usr/local/rvm/src/ruby-2.2.2
+RUN rm -rf /usr/local/rvm/src/ruby-*
 CMD /bin/bash -l
