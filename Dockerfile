@@ -31,6 +31,9 @@ RUN yum install -y \
     libev-devel \
     libcurl-devel \
     vim-common
+RUN yum -y install python27-python-pip
+RUN pip install awscli
+
 RUN yum remove -y git
 
 RUN \
