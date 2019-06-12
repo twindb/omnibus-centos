@@ -29,6 +29,7 @@ RUN yum install -y \
     libgcrypt-devel \
     libev-devel \
     libcurl-devel \
+    vim-common \
     devtoolset-7-gcc*
 
 RUN source /opt/rh/python27/enable; pip install awscli
