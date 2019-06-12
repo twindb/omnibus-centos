@@ -1,9 +1,8 @@
 FROM centos:centos6
 MAINTAINER Maksym Kryva @mkryva
 
-RUN yum -y install epel-release
+RUN yum -y install epel-release centos-release-scl
 RUN yum groupinstall -y 'Development Tools'
-RUN yum -y install centos-release-scl
 
 RUN yum install -y \
     which \
@@ -30,7 +29,7 @@ RUN yum install -y \
     libgcrypt-devel \
     libev-devel \
     libcurl-devel \
-    vim-common
+    devtoolset-7-gcc*
 
 RUN source /opt/rh/python27/enable; pip install awscli
 
@@ -61,7 +60,8 @@ RUN bash -lc "rvm requirements; \
 
 RUN rm -rf /usr/local/rvm/src/ruby-*
 
-RUN /usr/local/bin/git clone https://github.com/twindb/backup.git /tmp/backup
-RUN bash -lc "cd /tmp/backup/omnibus; bundle install --binstubs"
+COPY Gemfile.lock Gemfile /tmp/
+RUN bash -lc "cd /tmp/; bundle install --binstubs"
 
-CMD /bin/bash -l
+ENTRYPOINT ["/usr/bin/scl", "enable", "devtoolset-7", "--"]
+CMD ["/usr/bin/scl", "enable", "devtoolset-7", "--", "/usr/bin/bash"]
