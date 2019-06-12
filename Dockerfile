@@ -46,8 +46,8 @@ RUN bash -lc "rvm requirements; \
 
 RUN rm -rf /usr/local/rvm/src/ruby-*
 
-RUN git clone https://github.com/twindb/backup.git /tmp/backup
-RUN bash -lc "cd /tmp/backup/omnibus; bundle install --binstubs"
+COPY Gemfile.lock Gemfile /tmp/
+RUN bash -lc "cd /tmp/; bundle install --binstubs"
 
 ENTRYPOINT ["/usr/bin/scl", "enable", "devtoolset-7", "--"]
 CMD ["/usr/bin/scl", "enable", "devtoolset-7", "--", "/usr/bin/bash"]
